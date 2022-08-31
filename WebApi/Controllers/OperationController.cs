@@ -11,5 +11,15 @@ namespace WebApi.Controllers
         public OperationController() : base(new OperationRepository())
         {
         }
+
+        [HttpGet("Month")]
+        public List<List<Operation>> OperationMonth([FromQuery] DateTime date)
+        {
+            OperationRepository operationRepository = new OperationRepository();
+            return operationRepository.SelectMonth(date);
+
+        }
+
+
     }
 }
