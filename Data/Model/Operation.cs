@@ -6,8 +6,8 @@
         public decimal Value { get; set; }
         public bool Entry { get; set; }
         public DateOnly Date { get; set; }
-        public Category Category { get; set; }
-        public User User { get; set; }
+        public virtual Category? Category { get; set; }
+        public virtual User? User { get; set; }
 
 
     }
