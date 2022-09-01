@@ -8,7 +8,7 @@ namespace WebApi.Controllers
     [ApiController]
     public class OperationController : GenericController<Operation, OperationRepository>
     {
-        public OperationController() : base(new OperationRepository())
+        public OperationController()
         {
         }
 

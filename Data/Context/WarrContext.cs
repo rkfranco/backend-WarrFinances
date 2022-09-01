@@ -13,7 +13,8 @@ namespace Data.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseLazyLoadingProxies();
+            //optionsBuilder.UseLazyLoadingProxies();
+            //optionsBuilder.ConfigureWarnings(w => w.Ignore(CoreEventId.LazyLoadOnDisposedContextWarning));
             optionsBuilder.UseNpgsql("Host=zuplae.vps-kinghost.net; Port=5445; Database=postgres; UserId=postgres; Password=123456");
 
         }

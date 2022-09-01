@@ -8,7 +8,7 @@ namespace WebApi.Controllers
     [ApiController]
     public class CategoryController : GenericController<Category, CategoryRepository>
     {
-        public CategoryController() : base(new CategoryRepository())
+        public CategoryController()
         {
         }
     }

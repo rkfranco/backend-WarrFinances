@@ -8,7 +8,7 @@ namespace WebApi.Controllers
     [ApiController]
     public class UserController : GenericController<User, UserRepository>
     {
-        public UserController() : base(new UserRepository())
+        public UserController()
         {
         }
     }
