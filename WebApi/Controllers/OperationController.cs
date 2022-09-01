@@ -12,11 +12,13 @@ namespace WebApi.Controllers
         {
         }
 
+
+
         [HttpGet("Month")]
-        public List<List<Operation>> OperationMonth([FromQuery] DateTime date)
+        public List<List<Operation>> OperationMonth([FromQuery] DateTime date, int userId)
         {
             OperationRepository operationRepository = new OperationRepository();
-            return operationRepository.SelectMonth(date);
+            return operationRepository.SelectMonth(date, userId);
 
         }
 
