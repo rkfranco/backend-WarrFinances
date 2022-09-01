@@ -12,6 +12,8 @@ namespace WebApi.Controllers
         {
         }
 
+
+
         [HttpGet("Month")]
         public List<List<Operation>> OperationMonth([FromQuery] DateTime date, int userId)
         {
@@ -25,6 +27,7 @@ namespace WebApi.Controllers
             OperationRepository operationRepository = new OperationRepository();
             return operationRepository.SelectById(id);
         }
+
 
     }
 }
