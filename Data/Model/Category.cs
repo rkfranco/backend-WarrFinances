@@ -9,6 +9,7 @@ namespace Data.Model
         public int Color { get; set; }
         public int Icon { get; set; }
         public int UserId { get; set; }
+
         [ForeignKey("UserId")]
         [JsonIgnore]
         public virtual User? User { get; set; }

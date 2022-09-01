@@ -37,5 +37,16 @@ namespace Data.Repository
             all.Add(total);
             return all;
         }
+
+        public Operation SelectById(int id)
+        {
+
+            Operation operation;
+            using(WarrContext warrContext = new WarrContext())
+            {
+                operation = warrContext.Operation.Include("Category").Where(operation => operation.Id == id).FirstOrDefault();
+            }
+            return operation;
+        }
     }
 }

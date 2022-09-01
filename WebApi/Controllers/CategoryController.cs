@@ -8,8 +8,13 @@ namespace WebApi.Controllers
     [ApiController]
     public class CategoryController : GenericController<Category, CategoryRepository>
     {
-        public CategoryController()
+
+        [HttpGet("UserCategories")]
+        public List<Category> GetAllUserCategories(int id)
         {
+            CategoryRepository repository = new CategoryRepository();
+            return repository.GetAllUserCategory(id);
         }
+
     }
 }
