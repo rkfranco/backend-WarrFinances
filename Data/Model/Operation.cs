@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace Data.Model
 {
@@ -17,6 +18,7 @@ namespace Data.Model
 
         public int UserId { get; set; }
         [ForeignKey("UserId")]
+        [JsonIgnore]
         public virtual User? User { get; set; }
     }
 }

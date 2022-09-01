@@ -17,7 +17,7 @@ namespace Data.Repository
             return operations;
         }
 
-        public List<List<Operation>> SelectMonth(DateTime date)
+        public List<List<Operation>> SelectMonth(DateTime date, int userId)
         {
             List<Operation> output = new List<Operation>();
             List<Operation> input = new List<Operation>();
@@ -25,8 +25,8 @@ namespace Data.Repository
 
             using (WarrContext warrContext = new WarrContext())
             {
-                input = warrContext.Operation.Where(operation => operation.Date.Month == date.Month && operation.Date.Year == date.Year && operation.Entry).OrderBy(operation => operation.Date).ToList();
-                output = warrContext.Operation.Where(operation => operation.Date.Month == date.Month && operation.Date.Year == date.Year && !operation.Entry).OrderBy(operation => operation.Date).ToList();
+                input = warrContext.Operation.Include("Category").Where(operation => operation.Date.Month == date.Month && operation.Date.Year == date.Year && operation.Entry && operation.UserId == userId).OrderBy(operation => operation.Date).ToList();
+                output = warrContext.Operation.Include("Category").Where(operation => operation.Date.Month == date.Month && operation.Date.Year == date.Year && !operation.Entry && operation.UserId == userId).OrderBy(operation => operation.Date).ToList();
             }
             List<List<Operation>> all = new List<List<Operation>>();
             all.Add(input);
