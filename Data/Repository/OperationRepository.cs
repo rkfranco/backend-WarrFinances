@@ -6,6 +6,24 @@ namespace Data.Repository
 {
     public class OperationRepository : BaseRepository<Operation>
     {
+        public List<CategoryChart> GetAllGroupCategory()
+        {
+            List<CategoryChart> operations = new List<CategoryChart>();
+            using (WarrContext warrContext = new WarrContext())
+            {
+                operations = warrContext.Operation
+                    .Include("User")
+                    .Include("Category")
+                    .GroupBy(c=> new { c.Category.Name, c.Category.Color })
+                    .Select(c => new CategoryChart{ 
+                        Name = c.Key.Name, 
+                        Color = c.Key.Color, 
+                        Sum = c.Sum(x => x.Value) 
+                    })
+                    .ToList();
+            }
+            return operations;
+        }
 
         public override List<Operation> GetAll()
         {

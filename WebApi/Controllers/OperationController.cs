@@ -12,7 +12,12 @@ namespace WebApi.Controllers
         {
         }
 
-
+        [HttpGet("Chart")]
+        public List<CategoryChart> OperationMonth()
+        {
+            OperationRepository operationRepository = new OperationRepository();
+            return operationRepository.GetAllGroupCategory();
+        }
 
         [HttpGet("Month")]
         public List<List<Operation>> OperationMonth([FromQuery] DateTime date, int userId)
